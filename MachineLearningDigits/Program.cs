@@ -10,6 +10,7 @@ namespace MachineLearningDigits
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
