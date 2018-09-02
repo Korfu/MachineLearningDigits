@@ -8,7 +8,8 @@ namespace MachineLearningDigits.Models
 {
     public class Record
     {
-        public int Number;
-        public int[] Pixels;
+        public int Number { get; set;}
+        public int[] Pixels { get; set;}
+
     }
 }

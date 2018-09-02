@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Distance.cs" />
+    <Compile Include="Commands\Prediction.cs" />
+    <Compile Include="Models\DistanceAndNumber.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
