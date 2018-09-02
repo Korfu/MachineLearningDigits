@@ -12,12 +12,17 @@ namespace MachineLearningDigits
         static void Main(string[] args)
         {
 
-            var trainingArray = File.ReadAllLines("ExcelFiles/trainingsample.csv").Skip(1);
+            var trainingArray = File.ReadAllLines("ExcelFiles/trainingsample.csv");
+            var noHeadersArray = trainingArray.Skip(1);
 
+            var splittedRows = noHeadersArray.Select(e => e.Split(',').Select(x => int.Parse(x))).ToList();
 
-            foreach (var row in trainingArray.Take(5))
+            foreach (var row in splittedRows.Take(2))
             {
-                Console.WriteLine(row);
+                foreach (var item in row)
+                {
+                    Console.Write($"{item}|");
+                }
                 Console.WriteLine(" --- ");
             }
 
