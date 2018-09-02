@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MachineLearningDigits.Commands;
 
 namespace MachineLearningDigits
 {
@@ -25,17 +26,16 @@ namespace MachineLearningDigits
                 return newRecord;
             }).ToList();
 
-            foreach (var row in recordsList.Take(10))
-            {
-                Console.WriteLine($"Row number: {row.Number} | pixels:{row.Pixels.Sum()}");
+            //foreach (var row in recordsList.Take(10))
+            //{
+            //    Console.WriteLine($"Row number: {row.Number} | pixels:{row.Pixels.Sum()}");
 
-                Console.WriteLine(" --- ");
-            }
+            //    Console.WriteLine(" --- ");
+            //}
+            var distanceBetweenAandB = Distance.GetDistance(recordsList.First().Pixels, recordsList.Skip(2).First().Pixels);
+            Console.WriteLine(distanceBetweenAandB);
 
-    
             Console.ReadLine();
-            Console.WriteLine("Hello world!");
-
         }
     }
 }
