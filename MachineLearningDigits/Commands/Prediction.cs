@@ -1,9 +1,6 @@
 ﻿using MachineLearningDigits.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MachineLearningDigits.Commands
 {
@@ -15,7 +12,7 @@ namespace MachineLearningDigits.Commands
 
             for (var i=0; i < validationRecordsList.Length; i++)
             {
-                var listForPrediction = sampleRecordsList.Select(r =>
+                var closestMatch = sampleRecordsList.Select(r =>
                 {
                     DistanceNumber distanceNumber = new DistanceNumber()
                     {
@@ -24,9 +21,9 @@ namespace MachineLearningDigits.Commands
                     };
                     return distanceNumber;
 
-                }).OrderBy(g => g.DistanceToNumber).ToArray();
+                }).OrderBy(g => g.DistanceToNumber).ToArray().FirstOrDefault();
 
-                resultsList.Add(listForPrediction.FirstOrDefault());
+                resultsList.Add(closestMatch);
             }
             return resultsList;
         }
