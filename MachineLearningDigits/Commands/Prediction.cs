@@ -9,9 +9,26 @@ namespace MachineLearningDigits.Commands
 {
     public class Prediction
     {
-        public static int Predict(int[] pixels, Record[] sampleRecords)
+        public static List<DistanceNumber> Predict(Record[] sampleRecordsList, Record[] validationRecordsList)
         {
-            return 42;
+            var resultsList = new List<DistanceNumber>();
+
+            for (var i=0; i < validationRecordsList.Length; i++)
+            {
+                var listForPrediction = sampleRecordsList.Select(r =>
+                {
+                    DistanceNumber distanceNumber = new DistanceNumber()
+                    {
+                        Number = r.Number,
+                        DistanceToNumber = Distance.GetDistance(r.Pixels, validationRecordsList.Skip(i).FirstOrDefault().Pixels)
+                    };
+                    return distanceNumber;
+
+                }).OrderBy(g => g.DistanceToNumber).ToArray();
+
+                resultsList.Add(listForPrediction.FirstOrDefault());
+            }
+            return resultsList;
         }
     }
 }

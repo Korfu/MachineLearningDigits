@@ -24,7 +24,7 @@ namespace MachineLearningDigits
                     Pixels = r.Skip(1).ToArray()
                 };
                 return newRecord;
-            }).ToList();
+            }).ToArray();
 
             var validationArray = File.ReadAllLines("ExcelFiles/validationsample.csv");
             var splittedValidationArray = validationArray.Skip(1).Select(e => e.Split(',').Select(x => int.Parse(x))).ToList();
@@ -36,23 +36,14 @@ namespace MachineLearningDigits
                     Pixels = r.Skip(1).ToArray()
                 };
                 return newRecord;
-            }).ToList();
-
-            var listForPrediction = recordsList.Select(r =>
-            {
-                DistanceNumber distanceNumber = new DistanceNumber()
-                {
-                    Number = r.Number,
-                    DistanceToNumber = Distance.GetDistance(r.Pixels, validationrecordsList.FirstOrDefault().Pixels)
-                };
-                Console.WriteLine(distanceNumber.Number+" "+distanceNumber.DistanceToNumber);
-                return distanceNumber;
-                
             }).ToArray();
 
-            var distanceBetweenAandB = Distance.GetDistance(recordsList.First().Pixels, recordsList.Skip(2).First().Pixels);
-            Console.WriteLine(distanceBetweenAandB);
+            var results = Prediction.Predict(recordsList, validationrecordsList);
 
+            for (var i = 0; i< results.ToArray().Length;i++)
+            {
+                Console.WriteLine($" The closest match for{i}-th record is {results[i].Number} with a distance of {results[i].DistanceToNumber}");
+            }
             Console.ReadLine();
         }
     }
