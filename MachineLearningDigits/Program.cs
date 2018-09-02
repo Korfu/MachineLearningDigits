@@ -23,6 +23,7 @@ namespace MachineLearningDigits
 
     
             Console.ReadLine();
+            Console.WriteLine("Hello world!");
 
         }
     }
