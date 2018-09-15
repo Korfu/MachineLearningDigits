@@ -6,13 +6,13 @@ namespace MachineLearningDigits.Commands
 {
     public class Prediction
     {
-        public static List<DistanceNumber> Predict(Record[] sampleRecordsList, Record[] validationRecordsList)
+        public static List<DistanceNumber> Predict(List<Record> sampleRecordsList, List<Record> validationRecordsList)
         {
             var resultsList = new List<DistanceNumber>();
 
-            for (var i=0; i < validationRecordsList.Length; i++)
+            for (var i=0; i < validationRecordsList.Count; i++)
             {
-                var closestMatch = sampleRecordsList.Select(r =>
+                var closestMatch = sampleRecordsList.AsParallel().Select(r =>
                 {
                     DistanceNumber distanceNumber = new DistanceNumber()
                     {
@@ -21,7 +21,7 @@ namespace MachineLearningDigits.Commands
                     };
                     return distanceNumber;
 
-                }).OrderBy(g => g.DistanceToNumber).ToArray().FirstOrDefault();
+                }).OrderBy(g => g.DistanceToNumber).ToList().FirstOrDefault();
 
                 resultsList.Add(closestMatch);
             }

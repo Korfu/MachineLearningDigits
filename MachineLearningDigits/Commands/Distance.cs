@@ -11,7 +11,7 @@ namespace MachineLearningDigits.Commands
             {
                 tempResult += (a[i] - b[i]) * (a[i] - b[i]);
             }
-            var result = (int)Math.Sqrt(tempResult);
+            var result = tempResult;
 
             return result;
         }
