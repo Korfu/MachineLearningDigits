@@ -6,7 +6,7 @@ namespace MachineLearningDigits.Helpers
 {
     public class CSVFormatter
     {
-        public List<Record> FormatToRecordList(string[] csv)
+        public Record[] FormatToRecordList(string[] csv)
         {
             var noHeadersArray = csv.Skip(1);
             var splittedRows = noHeadersArray.Select(e => e.Split(',').Select(x => int.Parse(x))).ToList();
@@ -18,7 +18,7 @@ namespace MachineLearningDigits.Helpers
                     Pixels = r.Skip(1).ToArray()
                 };
                 return newRecord;
-            }).ToList();
+            }).ToArray();
 
             return recordsList;
         }

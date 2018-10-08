@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace MachineLearningDigits.Commands
 {
@@ -11,9 +12,7 @@ namespace MachineLearningDigits.Commands
             {
                 tempResult += (a[i] - b[i]) * (a[i] - b[i]);
             }
-            var result = tempResult;
-
-            return result;
+            return tempResult;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace MachineLearningDigits
             for (var i = 0; i< results.ToArray().Length;i++)
             {
                 if (results[i].Number.Equals(validationrecordsList[i].Number)) { accuracy++; }
-                Console.WriteLine($" The closest match for{i}-th record is {results[i].Number} || {validationrecordsList[i].Number} distance of {results[i].DistanceToNumber}");
+                //Console.WriteLine($" The closest match for{i}-th record is {results[i].Number} || {validationrecordsList[i].Number} distance of {results[i].DistanceToNumber}");
             }
             Console.WriteLine($"Accuracy is {accuracy} out of {validationArray.Length}");
             sw.Stop();
